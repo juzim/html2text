@@ -59,4 +59,28 @@ EOT;
 
         $this->assertEquals($expected, $html2text->getText());
     }
+
+    /**
+     * @dataProvider getSpacesData
+     *
+     * @param $expected
+     * @param $html
+     */
+    public function testTrimSpaces($expected, $html) {
+        $html2text = new Html2Text($html);
+
+        $this->assertEquals($expected, $html2text->getText());
+    }
+
+    /**
+     * @see testTrimSpaces
+     * @return array
+     */
+    public function getSpacesData() {
+        return [
+            ['BOLD WITH SPACE: Rest of text', "<b>Bold with space: </b>Rest of text"],
+            ["BOLD WITH SPACE: Rest of text\n", " <p> <b>Bold with space: </b>Rest of text </p> "],
+            ["BOLD WITH SPACE: Rest of text\n", " <p> <b>Bold    with  space:  </b>Rest  of    text  </p> "],
+        ];
+    }
 }

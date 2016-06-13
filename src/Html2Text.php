@@ -648,7 +648,7 @@ class Html2Text
     {
         $options = $this->getOptionsForElement($element);
 
-        $str = trim($str);
+//        $str = trim($str);
 
         if (!$options) {
             return $str;
@@ -673,7 +673,7 @@ class Html2Text
                 }
             }
 
-            $str = trim(implode($chunks));
+            $str = implode($chunks);
 
             if ($options['case'] == self::OPTION_UCFIRST) {
                 $str = ucfirst($str);
