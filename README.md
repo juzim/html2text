@@ -2,7 +2,22 @@
 
 A PHP library for converting HTML to formatted plain text.
 
-[![Build Status](https://travis-ci.org/mtibben/html2text.png?branch=master)](https://travis-ci.org/mtibben/html2text)
+Fork of https://github.com/mtibben/html2text with additional options for elements.
+
+Each element (h1, li, div, etc) can have the following options:
+
+* 'case' => convert case (upper, lower, ucfirst, title)
+* 'prepend' => prepend a string
+* 'append' => append a string
+
+For example:
+'h4' => [
+    'case' => self::OPTION_UPPERCASE,
+    'prepend' => "==",
+    'append' => ": ==",
+]
+
+```<h4>Test string</h4> => ==TEST STRING:==```
 
 ## Basic Usage
 ```php
@@ -10,6 +25,9 @@ $html = new \Html2Text\Html2Text('Hello, &quot;<b>world</b>&quot;');
 
 echo $html->getText();  // Hello, "WORLD"
 ```
+
+## Todo
+* default sets for different formats (plain text, markdown, etc)
 
 ## History
 
