@@ -620,7 +620,7 @@ class Html2Text
      */
     private function getOptionsForElement($element)
     {
-        if (!array_key_exists($element, $this->options['elements'])) {
+        if (!array_key_exists(strtolower($element), $this->options['elements'])) {
             return null;
         }
 
